@@ -18,6 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Disponibilidad from './Components/Disponibilidad'
+import SpacingGrid from './Components/DisponibilidadCuadras'
 
 const drawerWidth = 340;
 
@@ -99,7 +100,7 @@ export default function Home() {
       </AppBar>
       <Main open={open}>
         <DrawerHeader />
-        <Disponibilidad/>
+        <SpacingGrid/>
       </Main>
       <Drawer
         sx={{
