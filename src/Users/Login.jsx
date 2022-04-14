@@ -99,17 +99,15 @@ function Login() {
       </Formik>
       <p>
         Don't have an account yet?
-        <NavLink to='/register'>
-          <Link
-            sx={{
+        <NavLink to='/register'sx={{
               textDecoration: 'none',
               fontWeight: '600',
               paddingLeft: '0.5rem'
             }}
-            to='/register'
-          >
+            >
+        
             Register.
-          </Link>
+        
         </NavLink>
       </p>
       <Box mt={5}>

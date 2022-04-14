@@ -36,8 +36,26 @@ function SignUp() {
 
   const navigate = useNavigate();
 
+  let user = {
+    nombre: 'Juan',
+    apellido: 'Perez'
+  };
+  ////////
+  /*
+  let response = await fetch('http://localhost:8000/usuarios', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify(user)
+  });
+  
+  let result = await response.json();
+  alert(result.message);
+  */
+  //////////
   const handleSubmit = (values, { resetForm }) => {
-    // console.log(values);
+    console.log(values.splice(-1, 1));
     alert(
       `username: ${values.username}
       email: ${values.email}
@@ -129,17 +147,15 @@ function SignUp() {
       </Formik>
       <p>
         Already have an account?
-        <NavLink to='/login'>
-          <Link
-            sx={{
+        <NavLink to='/login' sx={{
               textDecoration: 'none',
               fontWeight: '600',
               paddingLeft: '0.5rem',
               cursor: 'pointer'
-            }}
-          >
+            }}>
+
             Login.
-          </Link>
+
         </NavLink>
       </p>
       <Box mt={5}>
