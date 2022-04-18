@@ -36,32 +36,29 @@ function SignUp() {
 
   const navigate = useNavigate();
 
-  let user = {
-    nombre: 'Juan',
-    apellido: 'Perez'
-  };
-  ////////
-  /*
-  let response = await fetch('http://localhost:8000/usuarios', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: JSON.stringify(user)
-  });
-  
-  let result = await response.json();
-  alert(result.message);
-  */
-  //////////
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values.splice(-1, 1));
+   // console.log(values.splice(-1, 1));
+
+    let data={nombre:values.username, email:values.email, password:values.password}
     alert(
       `username: ${values.username}
       email: ${values.email}
       password: ${values.password}
       password2: ${values.password2}`
     );
+
+    let response =  fetch('http://localhost:8000/usuarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    
+    let result =  response;
+//    alert(result.message);
+    console.log(result)
+    alert('Usuario Creado')
     resetForm();
     navigate('/login');
   };
