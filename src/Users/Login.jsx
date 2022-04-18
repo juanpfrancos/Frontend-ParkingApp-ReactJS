@@ -7,8 +7,6 @@ import * as Yup from 'yup';
 import CopyRight from '../Components/CopyRight';
 
 
-//! Yup --> validation olarak kullanılıyor
-//! Bu şemayı Formik içerisine validationShema olarak atıyoruz.
 const signUpValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'),
   password: Yup.string()
@@ -35,7 +33,20 @@ function Login() {
       `email: ${values.email}
       password: ${values.password}`
     );
+
+    let data={email:values.email, password:values.password}
+    let response =  fetch('http://localhost:8000/validar-login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    
+    let result =  response;
+
     resetForm();
+    navigate('/Home');
   };
 
   return (
@@ -60,24 +71,17 @@ function Login() {
       <Typography sx={{ margin: '1rem' }} variant='h4'>
         Login
       </Typography>
-      {/* //! Bütün formu sarmallıyoruz. Kendi local state i var. ilave olarak state tanımlamıyoruz. Sadece yukarıda const ile initialValues tanımlıyoruz. initial değerleri formik tagi içerisine tanımlıyoruz. */}
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        //! Yup ile hazırladığımız validationu buraya gönderiyoruz.
         validationSchema={signUpValidationSchema}
       >
-        {/* //!Bütün formu curly braces içerisine alıyoruz. Ve arrow function kullanarak bütün değişkenleri burada tanımlıyoruz. Ayrıca değerleri destructuring yapmak önemli  */}
         {({
-          //!Parametre olarak tanımladığımız (values) değişkenleri TextField içerisinde value değişkenlerine atıyoruz.
           values,
           handleChange,
-          //! handleSubmit önce burada, daha sonra Formik içerisinde tanımlıyoruz. Müteakiben fonksiyonu yukarıda oluşturuyoruz.
           handleSubmit,
-          //! touched and errors and handleBlur--> validation hatasını almak için eklememiz gerekiyor.
           touched,
           errors,
-          //! handleBlur --> focustan yani inputtan çıktığımızda blur oluyor.
           handleBlur
         }) => (
           <form onSubmit={handleSubmit}>

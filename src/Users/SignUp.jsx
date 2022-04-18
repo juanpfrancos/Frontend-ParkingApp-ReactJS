@@ -6,12 +6,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import CopyRight from '../Components/CopyRight';
 
-
-//! Yup --> validation olarak kullanılıyor
-//! Bu şemayı Formik içerisine validationShema olarak atıyoruz.
 const signUpValidationSchema = Yup.object().shape({
   username: Yup.string().required('Display name is required').min(2, 'Too short').max(15, 'Must be 15 char or less'),
-  //! En az 2 karakter olması lazım. olmazsa yanına yazdığımız mesajı
   email: Yup.string().email('Invalid Email').required('Email is required'),
   password: Yup.string()
     .required('No password provided')
@@ -37,16 +33,8 @@ function SignUp() {
   const navigate = useNavigate();
 
   const handleSubmit = (values, { resetForm }) => {
-   // console.log(values.splice(-1, 1));
 
     let data={nombre:values.username, email:values.email, password:values.password}
-    alert(
-      `username: ${values.username}
-      email: ${values.email}
-      password: ${values.password}
-      password2: ${values.password2}`
-    );
-
     let response =  fetch('http://localhost:8000/usuarios', {
       method: 'POST',
       headers: {
@@ -85,41 +73,43 @@ function SignUp() {
       <Typography sx={{ margin: '1rem' }} variant='h4'>
         Sign Up
       </Typography>
-      {/* //! Bütün formu sarmallıyoruz. Kendi local state i var. ilave olarak state tanımlamıyoruz. Sadece yukarıda const ile initialValues tanımlıyoruz. initial değerleri formik tagi içerisine tanımlıyoruz. */}
+      {/* //! Envolvemos todo el formulario. 
+        Tiene su propio estado local. Además, no definimos un estado. 
+        Simplemente definimos initialValues ​​​​con const arriba. 
+        Definimos valores iniciales en la etiqueta fórmica. */}
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        //! Yup ile hazırladığımız validationu buraya gönderiyoruz.
+        //! Enviamos la validación que preparamos con Yup aquí.
         validationSchema={signUpValidationSchema}
       >
-        {/* //!Bütün formu curly braces içerisine alıyoruz. Ve arrow function kullanarak bütün değişkenleri burada tanımlıyoruz. Ayrıca değerleri destructuring yapmak önemli  */}
+        {/* //!Ponemos todo el formulario entre llaves. Y definimos todas las variables aquí usando la función de flecha. También es importante desestructurar los valores */}
         {({
-          //!Parametre olarak tanımladığımız (values) değişkenleri TextField içerisinde value değişkenlerine atıyoruz.
+            //!Asignamos las variables (valores) que definimos como parámetros a las variables de valor en el TextField.
           values,
           handleChange,
-          //! handleSubmit önce burada, daha sonra Formik içerisinde tanımlıyoruz. Müteakiben fonksiyonu yukarıda oluşturuyoruz.
+          //! Primero definimos handleSubmit aquí, luego en Formik. A continuación, creamos la función anterior.
           handleSubmit,
-          //! touched and errors and handleBlur--> validation hatasını almak için eklememiz gerekiyor.
+          //! Necesitamos agregar toques y errores y handleBlur--> para obtener el error de validación.
           touched,
           errors,
-          //! handleBlur --> focustan yani inputtan çıktığımızda blur oluyor.
+          //! handleBlur --> se vuelve borroso cuando dejamos el foco, esa es la entrada.
           handleBlur
         }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                {/* //! xs={12} --> 12 birim yer kapşlasın */}
                 <TextField
                   name='username'
                   label='User Name'
                   variant='outlined'
                   value={values.username}
                   onChange={handleChange}
-                  //! onBlur --> focustan çıktıktan sonra
+                  //! onBlur --> después de fuera de foco
                   onBlur={handleBlur}
-                  //! helper text input altındaki validation uyarısı
+                  //! Advertencia de validación en la entrada de texto auxiliar
                   helperText={touched.username && errors.username}
-                  //! uyarıyı error şeklinde vermesi için (rengi kırmızı oldu)
+                  //! para dar la advertencia como un error (el color se volvió rojo)
                   error={touched.username && Boolean(errors.username)}
                   fullWidth
                 />
