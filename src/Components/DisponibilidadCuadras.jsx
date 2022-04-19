@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import { ChartPie } from './Chart';
 
 export default function SpacingGrid() {
   const [spacing, setSpacing] = React.useState(2);
@@ -42,6 +43,7 @@ export default function SpacingGrid() {
         </Grid>
       </Grid>
     </Grid>
+    <ChartPie/>
     </>
   );
 }

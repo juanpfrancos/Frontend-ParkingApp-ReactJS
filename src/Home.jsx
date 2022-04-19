@@ -20,8 +20,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Disponibilidad from './Components/Disponibilidad'
 import SpacingGrid from './Components/DisponibilidadCuadras'
 
-const drawerWidth = 340;
 
+const drawerWidth = 340;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
