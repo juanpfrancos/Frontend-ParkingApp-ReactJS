@@ -35,7 +35,7 @@ function SignUp() {
   const handleSubmit = (values, { resetForm }) => {
 
     let data={nombre:values.username, email:values.email, password:values.password}
-    let response =  fetch('http://localhost:8000/usuarios', {
+    let response =  fetch('http://127.0.0.1:8000/usuarios/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ function SignUp() {
     
     let result =  response;
 //    alert(result.message);
-    console.log(result)
+    console.log(result.message)
     alert('Usuario Creado')
     resetForm();
     navigate('/login');

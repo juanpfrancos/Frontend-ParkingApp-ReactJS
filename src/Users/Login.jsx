@@ -27,6 +27,7 @@ function Login() {
 
   const navigate = useNavigate();
 
+
   const handleSubmit = (values, { resetForm }) => {
     // console.log(values);
     alert(
@@ -35,15 +36,26 @@ function Login() {
     );
 
     let data={email:values.email, password:values.password}
-    let response =  fetch('http://localhost:8000/validar-login', {
+    fetch('http://127.0.0.1:8000/usuarios/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
+    })
+    .then((response) => {
+      response.json()
+      let statusCode = response.status
+    })
+    .then((result) => {
+      if (Object.keys(result)[0] === 'access_token'){
+        alert('logueado')
+      }
+      else{
+        alert('no logueado')
+      }
     });
     
-    let result =  response;
 
     resetForm();
     navigate('/Home');
