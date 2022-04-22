@@ -1,11 +1,11 @@
 import { LockOutlined } from '@mui/icons-material';
-import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Formik } from 'formik';
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import CopyRight from '../Components/CopyRight';
-import axios from "axios";
+import AuthService from '../Services/auth';
 
 const signUpValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'),
@@ -27,30 +27,18 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-
-  const url = 'http://127.0.0.1:8000/usuarios/login'
-
   const handleSubmit = (values, { resetForm }) => {
-    // console.log(values);
-    alert(
-      `email: ${values.email}
-      password: ${values.password}`
+    const data=JSON.stringify({email:values.email, password:values.password})
+    AuthService.login(data).then(
+      () => {
+        navigate('/Home');
+        window.location.reload();
+      },
+      (error) => {
+        console.log(error.response)
+        console.log(error.message)
+      }
     );
-
-    let data={email:values.email, password:values.password}
-
-      
-    axios.post(url, JSON.stringify(data),config)
-    .then((response) => {
-      //console.log(response.data.access_token);
-      sessionStorage.setItem("token",response.data.access_token)
-      navigate('/Home');
-    });
 
     resetForm();
   };

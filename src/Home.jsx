@@ -19,6 +19,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Disponibilidad from './Components/Disponibilidad'
 import SpacingGrid from './Components/DisponibilidadCuadras'
+import AuthService from './Services/auth';
 
 
 const drawerWidth = 340;
@@ -142,7 +143,7 @@ export default function Home() {
               <ListItemIcon>
                  <LogoutIcon sx={{ color:'white' }} />
               </ListItemIcon>
-              <ListItemText primary='Cerrar Sesión' sx={{ color:'white' }} onClick={doLogout}/>
+              <ListItemText primary='Cerrar Sesión' sx={{ color:'white' }} onClick={AuthService.logout}/>
             </ListItem>
         </List>
       </Drawer>
