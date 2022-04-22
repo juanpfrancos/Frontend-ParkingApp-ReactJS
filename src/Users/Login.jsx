@@ -5,7 +5,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import CopyRight from '../Components/CopyRight';
-
+import axios from "axios";
 
 const signUpValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'),
@@ -27,6 +27,13 @@ function Login() {
 
   const navigate = useNavigate();
 
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  const url = 'http://127.0.0.1:8000/usuarios/login'
 
   const handleSubmit = (values, { resetForm }) => {
     // console.log(values);
@@ -36,29 +43,16 @@ function Login() {
     );
 
     let data={email:values.email, password:values.password}
-    fetch('http://127.0.0.1:8000/usuarios/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
+
+      
+    axios.post(url, JSON.stringify(data),config)
     .then((response) => {
-      response.json()
-      let statusCode = response.status
-    })
-    .then((result) => {
-      if (Object.keys(result)[0] === 'access_token'){
-        alert('logueado')
-      }
-      else{
-        alert('no logueado')
-      }
+      //console.log(response.data.access_token);
+      sessionStorage.setItem("token",response.data.access_token)
+      navigate('/Home');
     });
-    
 
     resetForm();
-    navigate('/Home');
   };
 
   return (
