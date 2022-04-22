@@ -79,6 +79,11 @@ export default function Home() {
     setOpen(false);
   };
 
+  const doLogout = () =>{
+    sessionStorage.clear();
+    window.location="/login"
+  }
+
   return (
     <Box sx={{ display: 'flex'}}>
       <CssBaseline />
@@ -137,7 +142,7 @@ export default function Home() {
               <ListItemIcon>
                  <LogoutIcon sx={{ color:'white' }} />
               </ListItemIcon>
-              <ListItemText primary='Cerrar Sesión' sx={{ color:'white' }}/>
+              <ListItemText primary='Cerrar Sesión' sx={{ color:'white' }} onClick={doLogout}/>
             </ListItem>
         </List>
       </Drawer>
