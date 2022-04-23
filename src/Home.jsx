@@ -19,7 +19,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Disponibilidad from './Components/Disponibilidad'
 import SpacingGrid from './Components/DisponibilidadCuadras'
-import AuthService from './Services/auth';
+import AuthService from './Services/AuthService';
 
 
 const drawerWidth = 340;
@@ -68,9 +68,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-start',
 }));
 
+
 export default function Home() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const sesion = AuthService.getCurrentUser()
+  
+  if(sesion === null){
+      window.location="/"
+  }  
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -79,11 +86,6 @@ export default function Home() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const doLogout = () =>{
-    sessionStorage.clear();
-    window.location="/login"
-  }
 
   return (
     <Box sx={{ display: 'flex'}}>
@@ -106,6 +108,9 @@ export default function Home() {
       </AppBar>
       <Main open={open}>
         <DrawerHeader />
+        <Typography sx={{ margin: '1rem', color: 'white', textAlign: 'center' }} variant='h3'>
+         Bienvenido {sesion.rol}
+        </Typography>
         <SpacingGrid/>
       </Main>
       <Drawer

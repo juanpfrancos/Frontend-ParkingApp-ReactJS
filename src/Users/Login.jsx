@@ -5,7 +5,7 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import CopyRight from '../Components/CopyRight';
-import AuthService from '../Services/auth';
+import AuthService from '../Services/AuthService';
 
 const signUpValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'),
@@ -32,7 +32,6 @@ function Login() {
     AuthService.login(data).then(
       () => {
         navigate('/Home');
-        window.location.reload();
       },
       (error) => {
         console.log(error.response)
