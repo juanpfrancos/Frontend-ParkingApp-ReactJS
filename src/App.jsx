@@ -5,6 +5,7 @@ import theme from './theme';
 import Home from './Home'
 import Login from './Users/Login'
 import SignUp from './Users/SignUp'
+import Tables from './Components/Client'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/register' element={<SignUp/>} />
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Home/>} />
+          <Route path='/client' element={<Tables/>} />
         </Routes>
       </BrowserRouter>
   </ThemeProvider>
