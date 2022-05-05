@@ -26,7 +26,6 @@ const login = async (data) => {
 };
 
 
-
 const logout = () => {
   sessionStorage.clear();
   window.location="/login"
@@ -48,6 +47,7 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
+  API_URL
 };
 
 
