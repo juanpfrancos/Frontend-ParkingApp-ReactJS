@@ -6,9 +6,9 @@ import axios from "axios";
 const columns = [
     { field: 'id_vehiculo', headerName: 'ID', hide: true },  
     { field: 'tipo_vehiculo', headerName: 'Tipo', width: 200 },
-    { field: 'cuarto_hora', headerName: 'Cuarto', type: 'number', width: 200 },
+    { field: 'cuarto_hora', headerName: 'Cuarto de hora', type: 'number', width: 200 },
     { field: 'hora', headerName: 'Hora', type: 'number', width: 200 },
-    { field: 'seis_horas', headerName: '6 Horas', type: 'number', width: 200 },
+    { field: 'seis_horas', headerName: 'Medio dia', type: 'number', width: 200 },
     { field: 'dia', headerName: 'Dia', type: 'number', width: 200 },
     { field: 'mes', headerName: 'Mes', type: 'number', width: 200 }
   ];
@@ -25,16 +25,20 @@ function ClientTables() {
 
   return (
     <>
-     <div style={{ height: 600, width: '100%' }}>
+      <div style={{ height: 214, width: '65%' }}>
         <DataGrid
           getRowId={(tax) => tax.id_vehiculo}
           rows={tax}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          disableSelectionOnClick
+          pageSize={3}
+          rowsPerPageOptions={[]}
           sortModel= {[{ field: 'total', sort: "desc" }]}
           headerAlign="center"
+          disableColumnFilter={true}
+          disableColumnMenu={true}
+          disableColumnSelector={true}
+          disableSelectionOnClick={true}
+          hideFooter={true}
         />
       </div>
     </>
