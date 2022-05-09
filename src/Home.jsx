@@ -106,6 +106,7 @@ export default function Home() {
           </IconButton>
         </Toolbar>
       </AppBar>
+
       <Main open={open}>
         <DrawerHeader />
         <Typography sx={{ margin: '1rem', color: 'white', textAlign: 'center' }} variant='h3'>
@@ -114,6 +115,7 @@ export default function Home() {
         <Tables />
         <SpacingGrid/>
       </Main>
+
       <Drawer
         sx={{
           width: drawerWidth,
@@ -126,11 +128,13 @@ export default function Home() {
         anchor="right"
         open={open}
       >
+
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronLeftIcon sx={{ color:'white' }}/> : <ChevronRightIcon sx={{ color:'white' }}/>}
           </IconButton>
         </DrawerHeader>
+        
         <Divider />
         <List>
             <ListItem button>
