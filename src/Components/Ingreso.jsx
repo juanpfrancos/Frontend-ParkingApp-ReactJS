@@ -79,7 +79,42 @@ const Ingreso = (props) => {
                             </RadioGroup>
                         </FormControl>
                     </Grid>
-                   
+                    <Grid item>
+                        <FormControl>
+                            <FormLabel>Tarifas</FormLabel>
+                            <RadioGroup
+                                name="tipo_tarifa"
+                                value={formValues.tipo_tarifa}
+                                onChange={handleInputChange}
+                                row
+                            >
+                                <FormControlLabel
+                                    key="1"
+                                    value="1"
+                                    control={<Radio size="small" />}
+                                    label="Hora"
+                                />
+                                <FormControlLabel
+                                    key="2"
+                                    value="2"
+                                    control={<Radio size="small" />}
+                                    label="Medio Dia"
+                                />
+                                <FormControlLabel
+                                    key="3"
+                                    value="3"
+                                    control={<Radio size="small" />}
+                                    label="Dia"
+                                />
+                                <FormControlLabel
+                                    key="4"
+                                    value="4"
+                                    control={<Radio size="small" />}
+                                    label="Mes"
+                                />
+                            </RadioGroup>
+                        </FormControl>
+                    </Grid>
 
                     <Grid item>
                         <Button variant="contained" color="primary" type="submit" style={{
