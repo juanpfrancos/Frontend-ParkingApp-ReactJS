@@ -4,6 +4,7 @@ const theme = createTheme(
   {
     palette: {
       type: 'dark',
+      //mode:'dark',
       primary: {
         main: '#ffd600',
       },

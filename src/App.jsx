@@ -5,6 +5,7 @@ import Home from './Home'
 import Login from './Users/Login'
 import SignUp from './Users/SignUp'
 import Tables from './Components/Client'
+import Ingreso from './Components/Ingreso'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Home/>} />
           <Route path='/client' element={<Tables/>} />
+          <Route path='/ingreso' element={<Ingreso/>} />
         </Routes>
       </BrowserRouter>
   </ThemeProvider>
