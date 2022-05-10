@@ -6,13 +6,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 
-export function ChartPie({disp}, {ocup}) {
+export function ChartPie({disp, ocup}) {
     const data = {
         labels: ['Disponible', 'Ocupado'],
         datasets: [
           {
             label: '# of Votes',
-            data: [disp, 3],
+            data: [disp, ocup],
             backgroundColor: [
               'rgba(75, 192, 192, 0.2)',
               'rgba(255, 99, 132, 0.2)',
