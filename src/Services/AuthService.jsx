@@ -26,6 +26,12 @@ const login = async (data) => {
 };
 
 
+const ingreso = async (data) => {
+  const response = await axios.post(API_URL + "registros", data, config);
+  console.log(response.data)
+
+};
+
 
 const logout = () => {
   sessionStorage.clear();
@@ -48,6 +54,8 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
+  ingreso,
+  API_URL
 };
 
 

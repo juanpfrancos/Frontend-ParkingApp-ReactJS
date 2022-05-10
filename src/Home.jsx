@@ -20,7 +20,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Disponibilidad from './Components/Disponibilidad'
 import SpacingGrid from './Components/DisponibilidadCuadras'
 import AuthService from './Services/AuthService';
-
+import Tables from './Components/Table'
 
 const drawerWidth = 340;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -95,7 +95,7 @@ export default function Home() {
           <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div" color='common.white'>
             Parking App
           </Typography>
-           <IconButton
+            <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="end"
@@ -106,13 +106,16 @@ export default function Home() {
           </IconButton>
         </Toolbar>
       </AppBar>
+
       <Main open={open}>
         <DrawerHeader />
         <Typography sx={{ margin: '1rem', color: 'white', textAlign: 'center' }} variant='h3'>
-         Bienvenido {sesion.rol}
+          Bienvenido {sesion.rol}
         </Typography>
+        <Tables />
         <SpacingGrid/>
       </Main>
+
       <Drawer
         sx={{
           width: drawerWidth,
@@ -125,28 +128,30 @@ export default function Home() {
         anchor="right"
         open={open}
       >
+
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronLeftIcon sx={{ color:'white' }}/> : <ChevronRightIcon sx={{ color:'white' }}/>}
           </IconButton>
         </DrawerHeader>
+        
         <Divider />
         <List>
             <ListItem button>
               <ListItemIcon>
-                 <InboxIcon sx={{ color:'white' }} />
+                  <InboxIcon sx={{ color:'white' }} />
               </ListItemIcon>
               <ListItemText primary='Registrar Ingreso' sx={{ color:'white' }}/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                 <InboxIcon sx={{ color:'white' }} />
+                  <InboxIcon sx={{ color:'white' }} />
               </ListItemIcon>
               <ListItemText primary='Registrar Salida' sx={{ color:'white' }}/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                 <LogoutIcon sx={{ color:'white' }} />
+                  <LogoutIcon sx={{ color:'white' }} />
               </ListItemIcon>
               <ListItemText primary='Cerrar Sesión' sx={{ color:'white' }} onClick={AuthService.logout}/>
             </ListItem>
