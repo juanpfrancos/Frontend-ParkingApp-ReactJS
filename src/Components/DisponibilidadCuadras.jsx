@@ -47,7 +47,7 @@ export default function SpacingGrid() {
         <Grid container justifyContent="center" spacing={spacing}>
           {[1, 2, 3].map((value) => (
               <Grid key={value} item>
-                <ChartPie disp={4}/>
+                <ChartPie disp={4} ocup={2}/>
             </Grid>
           ))}
         </Grid>
