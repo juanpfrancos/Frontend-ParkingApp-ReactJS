@@ -17,7 +17,7 @@ const theme = createTheme(
       fontFamily: 'Open Sans',
       h1: {
         fontFamily: 'Roboto',
-        color:'#fff'
+        color: 'black'
       },
       h2: {
         fontFamily: 'Roboto',
@@ -33,7 +33,7 @@ const theme = createTheme(
       },
       h5: {
         fontFamily: 'Roboto',
-        color:'#fff'
+        color: 'black'
       },
       subtitle1: {
         fontFamily: 'Roboto',

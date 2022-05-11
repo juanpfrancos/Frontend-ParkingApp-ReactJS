@@ -28,7 +28,7 @@ const GetChart = (props) => {
   if (loaded){
     return (
       <>
-        <ChartPie disp={response.total_cupo} ocup={props.occuped}/>
+        <ChartPie disp={response.capacidad-response.ocupados} ocup={response.ocupados}/>
       </>
     );
   }
@@ -42,15 +42,20 @@ export default function SpacingGrid() {
     <Grid sx={{ flexGrow: 1 }} container spacing={2}>
       <Grid item xs={12}>
         <Grid container justifyContent="center" spacing={2}>
-            <Grid>
-              <GetChart typeVehicle="1" period="1" occuped="20"/>
+          {[1, 2, 3].map((value) => (
+              <Grid key={value} item>
+                <GetChart typeVehicle={value} period="1"/>
             </Grid>
-            <Grid>
-              <GetChart typeVehicle="2" period="1" occuped="10"/>
+          ))}
+        </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center" spacing={2}>
+          {[1, 2, 3].map((value) => (
+              <Grid key={value} item>
+                <GetChart typeVehicle={value} period="4"/>
             </Grid>
-            <Grid>
-              <GetChart typeVehicle="3" period="1" occuped="10"/>
-            </Grid>
+          ))}
         </Grid>
       </Grid>
     </Grid>
