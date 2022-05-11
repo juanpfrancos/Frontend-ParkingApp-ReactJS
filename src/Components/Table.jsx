@@ -16,24 +16,27 @@ const colTarifas = [
   ];
 
 const colRegistros =[
-  { field: 'id_registro', headerName: 'ID'},  
-  { field: 'placa', headerName: 'Tipo'},
-  { field: 'tipo_vehiculo', headerName: 'Cuarto de hora'},
-  { field: 'ingreso', headerName: 'Hora'},
-  { field: 'salida', headerName: 'Medio dia'},
-  { field: 'total_horas', headerName: 'Dia'},
-  { field: 'pago_inicial', headerName: 'Mes'},
-  { field: 'pago_final', headerName: 'Dia'},
-  { field: 'total_costo', headerName: 'Dia'},
-  { field: 'registro_activo', headerName: 'Dia'},
-  { field: 'realizo', headerName: 'Dia'},
-  { field: 'tipo_tarifa', headerName: 'Dia'},
-  { field: 'en_parqueadero', headerName: 'Dia'}
+  { field: 'id_registro', headerName: 'ID', hide: true},  
+  { field: 'placa', headerName: 'Placa'},
+  { field: 'tipo_vehiculo', headerName: 'Tipo'},
+  { field: 'ingreso', headerName: 'Hora Ingreso'},
+  { field: 'salida', headerName: 'Hora Salida'},
+  { field: 'total_horas', headerName: 'Total Tiempo'},
+  { field: 'pago_inicial', headerName: 'Pago Inicial'},
+  { field: 'pago_final', headerName: 'Pago Final'},
+  { field: 'total_costo', headerName: 'Total Costo'},
+  { field: 'nombre', headerName: 'Nombre'},
+  { field: 'tipo_tarifa', headerName: 'Tipo Tarifa'}
 ]
 
 
-const endpoints = "tarifasCompuestas" //"registros"
-const columns = colTarifas //colRegistros
+//const endpoints = "tarifasCompuestas"
+//const endpoints = "registros"
+//const endpoints = "registros/%7Ben_parqueadero%7D?io=false"
+const endpoints = "registros/%7Ben_parqueadero%7D?io=true"
+
+//const columns = colTarifas
+const columns = colRegistros
 
 function Tables() {
   const [tax, setTax] = useState([]);
@@ -50,7 +53,7 @@ function Tables() {
     <>
       <div style={{ height: 214, width: '100%' }}>
         <DataGrid
-          getRowId={(tax) => tax.id_vehiculo}
+          getRowId={(tax) => tax.id_registro}
           rows={tax}
           columns={columns}
           pageSize={3}

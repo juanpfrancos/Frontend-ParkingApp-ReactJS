@@ -3,8 +3,7 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme(
   {
     palette: {
-      type: 'dark',
-      //mode:'dark',
+      mode:'dark',
       primary: {
         main: '#ffd600',
       },
@@ -13,6 +12,7 @@ const theme = createTheme(
         default: '#111111',
       },
     },
+    
     typography: {
       fontFamily: 'Open Sans',
       h1: {
