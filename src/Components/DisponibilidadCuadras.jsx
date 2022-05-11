@@ -1,62 +1,50 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import AuthService from '../Services/AuthService';
 import { ChartPie } from './Chart';
+import axios from "axios";
+
+
+const GetChart = (props) => {
+  const [loaded, setLoaded] = useState(false);
+  const endpoint = `disponibilidad/${props.typeVehicle}/${props.period}`
+  const [response, setResponse] = useState([]);
+  useEffect(() => {
+    const dataresp = async () =>{
+      try{      
+        const res = await axios.get(AuthService.API_URL + endpoint )
+        setResponse(res.data);
+        console.log(res.data);
+      }catch(error){
+        console.log("error de carga");
+      }finally{
+        setLoaded(true);
+      }
+
+    }
+    dataresp();
+  }, []);
+  if (loaded){
+    return (
+      <>
+        <ChartPie disp={response.total_cupo} ocup={props.occuped}/>
+      </>
+    );
+  }
+  return <span>Cargando</span>
+}
 
 export default function SpacingGrid() {
-  const [spacing, setSpacing] = React.useState(2);
 
   return (
     <>
     <Grid sx={{ flexGrow: 1 }} container spacing={2}>
       <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={spacing}>
-          {[0, 1, 2, 3, 4, 5].map((value) => (
-              <Grid key={value} item>
-              <Paper
-                sx={{
-                  height: 100,
-                  width: 100,
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                }}
-                />
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={spacing}>
-          {[0, 1, 2, 3, 4].map((value) => (
-              <Grid key={value} item>
-              <Paper
-                sx={{
-                    height: 100,
-                    width: 100,
-                    backgroundColor: (theme) =>
-                    theme.palette.mode === 'dark' ? '#1A2027' : 'blue',
-                }}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={spacing}>
+        <Grid container justifyContent="center" spacing={2}>
           {[1, 2, 3].map((value) => (
               <Grid key={value} item>
-                <ChartPie disp={4} ocup={2}/>
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={spacing}>
-          {[1, 2, 3].map((value) => (
-              <Grid key={value} item>
-                <ChartPie disp={3} ocup={2}/>
+                <GetChart typeVehicle={value} period="1" occuped="20"/>
             </Grid>
           ))}
         </Grid>
