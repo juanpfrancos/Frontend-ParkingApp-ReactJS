@@ -17,18 +17,17 @@ const colTarifas = [
 
 const colRegistros =[
   { field: 'id_registro', headerName: 'ID'},  
-  { field: 'placa', headerName: 'Tipo'},
-  { field: 'tipo_vehiculo', headerName: 'Cuarto de hora'},
-  { field: 'ingreso', headerName: 'Hora'},
-  { field: 'salida', headerName: 'Medio dia'},
-  { field: 'total_horas', headerName: 'Dia'},
-  { field: 'pago_inicial', headerName: 'Mes'},
-  { field: 'pago_final', headerName: 'Dia'},
-  { field: 'total_costo', headerName: 'Dia'},
-  { field: 'registro_activo', headerName: 'Dia'},
-  { field: 'realizo', headerName: 'Dia'},
-  { field: 'tipo_tarifa', headerName: 'Dia'},
-  { field: 'en_parqueadero', headerName: 'Dia'}
+  { field: 'placa', headerName: 'Placa'},
+  { field: 'tipo_vehiculo', headerName: 'Vehiculo'},
+  { field: 'ingreso', headerName: 'Hora ingreso'},
+  { field: 'salida', headerName: 'Hora salida'},
+  { field: 'total_horas', headerName: 'Total horas'},
+  { field: 'pago_inicial', headerName: 'Pago inicial'},
+  { field: 'pago_final', headerName: 'Pago final'},
+  { field: 'total_costo', headerName: 'Total servicio'},
+  { field: 'registro_activo', headerName: 'Registro activo'},
+  { field: 'nombre', headerName: 'Realizo'},
+  { field: 'en_parqueadero', headerName: 'Activo'}
 ]
 
 
