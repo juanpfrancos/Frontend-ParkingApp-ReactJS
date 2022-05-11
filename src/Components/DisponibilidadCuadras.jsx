@@ -42,11 +42,15 @@ export default function SpacingGrid() {
     <Grid sx={{ flexGrow: 1 }} container spacing={2}>
       <Grid item xs={12}>
         <Grid container justifyContent="center" spacing={2}>
-          {[1, 2, 3].map((value) => (
-              <Grid key={value} item>
-                <GetChart typeVehicle={value} period="1" occuped="20"/>
+            <Grid>
+              <GetChart typeVehicle="1" period="1" occuped="20"/>
             </Grid>
-          ))}
+            <Grid>
+              <GetChart typeVehicle="2" period="1" occuped="10"/>
+            </Grid>
+            <Grid>
+              <GetChart typeVehicle="3" period="1" occuped="10"/>
+            </Grid>
         </Grid>
       </Grid>
     </Grid>
