@@ -15,7 +15,6 @@ const GetChart = (props) => {
       try{      
         const res = await axios.get(AuthService.API_URL + endpoint )
         setResponse(res.data);
-        console.log(res.data);
       }catch(error){
         console.log("error de carga");
       }finally{
@@ -52,7 +51,7 @@ export default function SpacingGrid() {
       <Grid item xs={12}>
         <Grid container justifyContent="center" spacing={2}>
           {[1, 2, 3].map((value) => (
-              <Grid key={value} item>
+            <Grid key={value} item>
                 <GetChart typeVehicle={value} period="4"/>
             </Grid>
           ))}
