@@ -139,21 +139,21 @@ export default function Home() {
         <List>
             <ListItem button>
               <ListItemIcon>
-                  <InboxIcon sx={{ color:'white' }} />
+                  <InboxIcon  />
               </ListItemIcon>
-              <ListItemText primary='Registrar Ingreso' sx={{ color:'white' }}/>
+              <ListItemText primary='Registrar Ingreso'/>
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                  <InboxIcon sx={{ color:'white' }} />
+                  <InboxIcon />
               </ListItemIcon>
-              <ListItemText primary='Registrar Salida' sx={{ color:'white' }}/>
+              <ListItemText primary='Registrar Salida' />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                  <LogoutIcon sx={{ color:'white' }} />
+                  <LogoutIcon />
               </ListItemIcon>
-              <ListItemText primary='Cerrar Sesión' sx={{ color:'white' }} onClick={AuthService.logout}/>
+              <ListItemText primary='Cerrar Sesión' onClick={AuthService.logout}/>
             </ListItem>
         </List>
       </Drawer>

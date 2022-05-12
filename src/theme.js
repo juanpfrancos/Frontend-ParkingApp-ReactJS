@@ -3,16 +3,17 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme(
   {
     palette: {
-      mode:'dark',
+      mode:'light',
+      /*
       primary: {
         main: '#ffd600',
       },
       background: {
         paper: '#212121',
         default: '#111111',
-      },
+      },*/
     },
-    
+    /*
     typography: {
       fontFamily: 'Open Sans',
       h1: {
@@ -49,7 +50,7 @@ const theme = createTheme(
       overline: {
         fontFamily: 'Roboto',
       },
-    },
+    },*/
   }
   )
 
