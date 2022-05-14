@@ -18,7 +18,7 @@ const colTarifas = [
 const colRegistros =[
   { field: 'id_registro', headerName: 'ID', hide: true},  
   { field: 'placa', headerName: 'Placa'},
-  { field: 'tipo_vehiculo', headerName: 'Tipo'},
+  { field: 'nombre_vehiculo', headerName: 'Tipo'},
   { field: 'ingreso', headerName: 'Hora Ingreso'},
   { field: 'salida', headerName: 'Hora Salida'},
   { field: 'total_horas', headerName: 'Total Tiempo'},
@@ -30,21 +30,24 @@ const colRegistros =[
 ]
 
 
-const endpoints = "tarifasCompuestas"
-//const endpoints = "registros"
-//const endpoints = "registros/%7Ben_parqueadero%7D?io=false"
-//const endpoints = "registros/%7Ben_parqueadero%7D?io=true"
-
-const columns = colTarifas
-//const columns = colRegistros
+const endTarifas = "tarifasCompuestas"
+const endOut = "registros/%7Ben_parqueadero%7D?io=false"
+const endInput = "registros/%7Ben_parqueadero%7D?io=true"
 
 function Tables() {
   const [tax, setTax] = useState([]);
+  const [regIn, setRegIn] = useState([]);
+  const [regOut, setRegOut] = useState([]);
+
   useEffect(() => {
     const dataresp = async () =>{
       
-      const response = await axios.get(AuthService.API_URL + endpoints )
-      setTax(response.data)
+      const responseTax = await axios.get(AuthService.API_URL + endTarifas )
+      const responseRegIn = await axios.get(AuthService.API_URL + endInput )
+      const responseRegOut = await axios.get(AuthService.API_URL + endOut )
+      setTax(responseTax.data)
+      setRegIn(responseRegIn.data)
+      setRegOut(responseRegOut.data)
     }
     dataresp()
   }, []);
@@ -55,7 +58,35 @@ function Tables() {
         <DataGrid
           getRowId={(tax) => tax.id_vehiculo}
           rows={tax}
-          columns={columns}
+          columns={colTarifas}
+          pageSize={3}
+          rowsPerPageOptions={[]}
+          sortModel= {[{ field: 'total', sort: "desc" }]}
+          headerAlign="center"
+          disableColumnFilter={true}
+          disableColumnMenu={true}
+          disableColumnSelector={true}
+          disableSelectionOnClick={true}
+          hideFooter={true}
+        />
+        <DataGrid
+          getRowId={(regIn) => regIn.id_registro}
+          rows={regIn}
+          columns={colRegistros}
+          pageSize={3}
+          rowsPerPageOptions={[]}
+          sortModel= {[{ field: 'total', sort: "desc" }]}
+          headerAlign="center"
+          disableColumnFilter={true}
+          disableColumnMenu={true}
+          disableColumnSelector={true}
+          disableSelectionOnClick={true}
+          hideFooter={true}
+        />
+        <DataGrid
+          getRowId={(regOut) => regOut.id_registro}
+          rows={regOut}
+          columns={colRegistros}
           pageSize={3}
           rowsPerPageOptions={[]}
           sortModel= {[{ field: 'total', sort: "desc" }]}
