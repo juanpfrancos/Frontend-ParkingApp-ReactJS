@@ -1,24 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { GridRowModes, DataGrid, GridToolbarContainer, GridActionsCellItem} from '@mui/x-data-grid';
+import { DataGrid} from '@mui/x-data-grid';
 import AuthService from '../Services/AuthService';
 import axios from "axios";
 
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import CancelIcon from '@mui/icons-material/Close';
-
-
-
-  //const [rows, setRows] = React.useState(initialRows);
-  
-
-
-  //tablas
 const colTarifas = [
     { field: 'id_vehiculo', headerName: 'ID', hide: true },  
     { field: 'nombre_vehiculo', headerName: 'Tipo', width: 200 },
