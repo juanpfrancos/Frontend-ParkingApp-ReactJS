@@ -38,26 +38,28 @@ export default function SpacingGrid() {
 
   return (
     <>
-    <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={2}>
-          {[1, 2, 3].map((value) => (
+    <div style={{ width: '100%' }}>
+      <Grid sx={{ flexGrow: 1 }} container spacing={4}>
+        <Grid item xs={12}>
+          <Grid container justifyContent="center" spacing={5}>
+            {[1, 2, 3].map((value) => (
+                <Grid key={value} item>
+                  <GetChart typeVehicle={value} period="1"/>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container justifyContent="center" spacing={5}>
+            {[1, 2, 3].map((value) => (
               <Grid key={value} item>
-                <GetChart typeVehicle={value} period="1"/>
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={2}>
-          {[1, 2, 3].map((value) => (
-            <Grid key={value} item>
                 <GetChart typeVehicle={value} period="4"/>
-            </Grid>
-          ))}
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
     </>
   );
 }

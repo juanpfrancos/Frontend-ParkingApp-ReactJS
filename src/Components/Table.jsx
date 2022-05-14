@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { DataGrid } from '@mui/x-data-grid';
+import { GridRowModes, DataGrid, GridToolbarContainer, GridActionsCellItem} from '@mui/x-data-grid';
 import AuthService from '../Services/AuthService';
 import axios from "axios";
 
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Close';
 
 
+
+  //const [rows, setRows] = React.useState(initialRows);
+  
+
+
+  //tablas
 const colTarifas = [
     { field: 'id_vehiculo', headerName: 'ID', hide: true },  
     { field: 'nombre_vehiculo', headerName: 'Tipo', width: 200 },
@@ -13,6 +27,7 @@ const colTarifas = [
     { field: 'seis_horas', headerName: 'Medio dia', width: 200 },
     { field: 'dia', headerName: 'Dia', width: 200 },
     { field: 'mes', headerName: 'Mes', width: 200 }
+
   ];
 
 const colRegistros =[
@@ -25,14 +40,14 @@ const colRegistros =[
   { field: 'pago_inicial', headerName: 'Pago Inicial'},
   { field: 'pago_final', headerName: 'Pago Final'},
   { field: 'total_costo', headerName: 'Total Costo'},
-  { field: 'nombre', headerName: 'Nombre'},
+  { field: 'nombre', headerName: 'Realizo'},
   { field: 'tipo_tarifa', headerName: 'Tipo Tarifa'}
-]
+];
 
 
-const endTarifas = "tarifasCompuestas"
-const endOut = "registros/%7Ben_parqueadero%7D?io=false"
-const endInput = "registros/%7Ben_parqueadero%7D?io=true"
+const endTarifas = "tarifasCompuestas";
+const endOut = "registros/false";
+const endInput = "registros/true";
 
 function Tables() {
   const [tax, setTax] = useState([]);
@@ -55,6 +70,7 @@ function Tables() {
   return (
     <>
       <div style={{ height: 214, width: '100%' }}>
+
         <DataGrid
           getRowId={(tax) => tax.id_vehiculo}
           rows={tax}
@@ -101,5 +117,4 @@ function Tables() {
     </>
   );
 }
-
 export default Tables;

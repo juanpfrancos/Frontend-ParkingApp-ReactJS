@@ -112,8 +112,9 @@ export default function Home() {
         <Typography sx={{ margin: '1rem', textAlign: 'center' }} variant='h3'>
           Bienvenido {sesion.rol}
         </Typography>
-        <Tables />
         <SpacingGrid/>
+        <Tables/>
+        
       </Main>
 
       <Drawer
