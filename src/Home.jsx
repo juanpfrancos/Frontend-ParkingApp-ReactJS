@@ -92,7 +92,7 @@ export default function Home() {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div" color='common.white'>
+          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
             Parking App
           </Typography>
             <IconButton
@@ -109,7 +109,7 @@ export default function Home() {
 
       <Main open={open}>
         <DrawerHeader />
-        <Typography sx={{ margin: '1rem', color: 'white', textAlign: 'center' }} variant='h3'>
+        <Typography sx={{ margin: '1rem', textAlign: 'center' }} variant='h3'>
           Bienvenido {sesion.rol}
         </Typography>
         <Tables />
@@ -131,7 +131,7 @@ export default function Home() {
 
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon sx={{ color:'white' }}/> : <ChevronRightIcon sx={{ color:'white' }}/>}
+            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         

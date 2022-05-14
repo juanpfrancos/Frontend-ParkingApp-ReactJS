@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import CssBaseline from '@mui/material/CssBaseline';
 import CopyRight from '../Components/CopyRight';
 import AuthService from '../Services/AuthService';
 
@@ -52,6 +53,7 @@ function Login() {
       }}
       maxWidth='sm'
     >
+      <CssBaseline />
       <Avatar
         sx={{
           margin: '1rem auto',
@@ -80,13 +82,13 @@ function Login() {
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <TextField name='email' label='Email' variant='outlined' value={values.email} onChange={handleChange} onBlur={handleBlur} helperText={touched.email && errors.email} error={touched.email && Boolean(errors.email)} fullWidth />
+                <TextField name='email' label='Email' value={values.email} onChange={handleChange} onBlur={handleBlur} helperText={touched.email && errors.email} error={touched.email && Boolean(errors.email)} fullWidth />
               </Grid>
               <Grid item xs={12}>
                 <TextField name='password' label='Password' type='password' value={values.password} onChange={handleChange} onBlur={handleBlur} helperText={touched.password && errors.password} error={touched.password && Boolean(errors.password)} fullWidth />
               </Grid>
               <Grid item xs={12}>
-                <Button type='submit' variant='contained' color='primary' fullWidth>
+                <Button type='submit' variant='contained'  fullWidth>
                   Login
                 </Button>
               </Grid>

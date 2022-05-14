@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import CssBaseline from '@mui/material/CssBaseline';
 import CopyRight from '../Components/CopyRight';
 import AuthService from '../Services/AuthService';
 
@@ -62,6 +63,7 @@ function SignUp() {
       }}
       maxWidth='sm'
     >
+      <CssBaseline />
       <Avatar
         sx={{
           margin: '1rem auto',
