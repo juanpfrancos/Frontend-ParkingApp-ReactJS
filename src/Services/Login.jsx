@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import CssBaseline from '@mui/material/CssBaseline';
 import CopyRight from '../Components/CopyRight';
-import AuthService from '../Services/AuthService';
+import AuthService from './AuthService';
 
 const signUpValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email').required('Email is required'),

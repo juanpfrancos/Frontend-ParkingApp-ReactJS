@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import CssBaseline from '@mui/material/CssBaseline';
 import CopyRight from '../Components/CopyRight';
-import AuthService from '../Services/AuthService';
+import AuthService from './AuthService';
 
 const signUpValidationSchema = Yup.object().shape({
   username: Yup.string().required('Display name is required').min(2, 'Too short').max(15, 'Must be 15 char or less'),

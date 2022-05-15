@@ -17,11 +17,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Disponibilidad from './Components/Disponibilidad'
-import SpacingGrid from './Components/DisponibilidadCuadras'
 import AuthService from './Services/AuthService';
-import Tables from './Components/Table';
-import Taxes from './Components/Tarifas';
+import Admin from './Users/Admin';
 
 const drawerWidth = 340;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -113,9 +110,7 @@ export default function Home() {
         <Typography sx={{ margin: '1rem', textAlign: 'center' }} variant='h3'>
           Bienvenido {sesion.rol}
         </Typography>
-        <Taxes/>
-        <SpacingGrid/>
-        <Tables/>
+        <Admin/>
       </Main>
 
       <Drawer
