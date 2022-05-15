@@ -41,6 +41,7 @@ export default function Table(props) {
           }
         }}
         disableSelectionOnClick={true}
+        experimentalFeatures={{ newEditingApi: true }}
       />
     </div>
   );

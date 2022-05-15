@@ -1,14 +1,24 @@
 import * as React from "react";
+import { NavLink} from 'react-router-dom';
 import SpacingGrid from '../Components/AvailabilityPie'
-import Tables from '../Components/Table';
-import Taxes from './Tarifas';
 
 export default function Invited() {
   return (
    <>
-        <Taxes/>
         <SpacingGrid/>
-        <Tables/>
+        <p>
+        Already have an account?
+        <NavLink to='/login' sx={{
+              textDecoration: 'none',
+              fontWeight: '600',
+              paddingLeft: '0.5rem',
+              cursor: 'pointer'
+            }}>
+
+            Login.
+
+        </NavLink>
+      </p>
    </> 
   )
 }

@@ -30,12 +30,12 @@ export default function Admin() {
     
     const colTarifas = [
         { field: 'id_vehiculo', headerName: 'ID', hide: true },  
-        { field: 'nombre_vehiculo', headerName: 'Tipo', width: 200 },
-        { field: 'cuarto_hora', headerName: 'Cuarto de hora',  width: 200 },
-        { field: 'hora', headerName: 'Hora',  width: 200 },
-        { field: 'seis_horas', headerName: 'Medio dia', width: 200 },
-        { field: 'dia', headerName: 'Dia', width: 200 },
-        { field: 'mes', headerName: 'Mes', width: 200 }
+        { field: 'nombre_vehiculo', headerName: 'Tipo', width: 200, editable: true},
+        { field: 'cuarto_hora', headerName: 'Cuarto de hora',  width: 200, editable: true},
+        { field: 'hora', headerName: 'Hora',  width: 200, editable: true},
+        { field: 'seis_horas', headerName: 'Medio dia', width: 200, editable: true},
+        { field: 'dia', headerName: 'Dia', width: 200, editable: true},
+        { field: 'mes', headerName: 'Mes', width: 200, editable: true}
     ];
 
     useEffect(() => {
