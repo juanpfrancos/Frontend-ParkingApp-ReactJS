@@ -1,11 +1,15 @@
 import * as React from "react";
 import { NavLink} from 'react-router-dom';
-import SpacingGrid from '../Components/AvailabilityPie'
+import SpacingGrid from '../Components/AvailabilityPie';
+import Taxes from '../Components/Tarifas';
 
 export default function Invited() {
   return (
     <>
+      <div>
         <SpacingGrid/>
+        <Taxes/>
+      </div>
         <p>
         ¿Ya tienes una cuenta?
         <NavLink to='/login' sx={{

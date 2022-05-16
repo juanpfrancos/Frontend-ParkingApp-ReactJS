@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { DataGrid} from '@mui/x-data-grid';
 import AuthService from '../Services/AuthService';
 import MaterialTable from "material-table";
 import axios from 'axios';
 import {Modal, TextField, Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
+import EditIcon from '@mui/icons-material/Edit';
+import { AddBox, ArrowDownward, SaveAlt } from "@material-ui/icons";
 
 //Columnas de la tabla
 const columns = [
@@ -89,71 +90,74 @@ function Taxes() {
     }).catch(error=>{
       console.log(error);
     })
-  }
+  };
 
   const seleccionarTarifa=(tarifa, caso)=>{
     setTarifaSeleccionada(tarifa);
     (caso==="Editar")?abrirCerrarModalEditar()
     :
     abrirCerrarModalEliminar()
-  }
+  };
 
   const abrirCerrarModalEditar=()=>{
     setModalEditar(!modalEditar);
-  }
+  };
 
   const abrirCerrarModalEliminar=()=>{
     setModalEliminar(!modalEliminar);
-  }
+  };
 
   useEffect(()=>{
     peticionGet();
-  }, [])
+  }, []);
 
   const bodyEditar=(
       <div className={styles.modal}>
         <h3>Editar Tarifa</h3>
         <TextField className={styles.inputMaterial} label="Cuarto hora" name="cuarto_hora" onChange={handleChange} value={tarifaSeleccionada&&tarifaSeleccionada.cuarto_hora}/>
-        <br />
+        <br/>
         <TextField className={styles.inputMaterial} label="Hora" name="hora" onChange={handleChange} value={tarifaSeleccionada&&tarifaSeleccionada.hora}/>          
-        <br />
+        <br/>
         <TextField className={styles.inputMaterial} label="Medio dia" name="seis_horas" onChange={handleChange} value={tarifaSeleccionada&&tarifaSeleccionada.seis_horas}/>
-        <br />
+        <br/>
         <TextField className={styles.inputMaterial} label="Dia" name="dia" onChange={handleChange} value={tarifaSeleccionada&&tarifaSeleccionada.dia}/>
-        <br />
-        <TextField className={styles.inputMaterial} label="Dia" name="mes" onChange={handleChange} value={tarifaSeleccionada&&tarifaSeleccionada.mes}/>
-        <br /><br />
+        <br/>
+        <TextField className={styles.inputMaterial} label="Mes" name="mes" onChange={handleChange} value={tarifaSeleccionada&&tarifaSeleccionada.mes}/>
+        <br/>
         <div align="right">
           <Button color="primary" onClick={()=>peticionPut()}>Editar</Button>
           <Button onClick={()=>abrirCerrarModalEditar()}>Cancelar</Button>
         </div>
       </div>
   )
-
-
-
-
   return (
     <>
       <div>
-      <MaterialTable
+        <MaterialTable
           columns={columns}
           data={data}
           title="Tarifas"  
           actions={[
             {
-              icon: 'edit',
+              icon: () => <EditIcon/>,
               tooltip: 'Editar Tarifa',
               onClick: (event, rowData) => seleccionarTarifa(rowData, "Editar")
             }
           ]}
           options={{
             actionsColumnIndex: -1,
+            exportButton: true,
+            paging: false,
+            search: false,
+            sorting: false
           }}
           localization={{
             header:{
-              actions: "Acciones"
-            }
+              actions: "Editar"
+            },
+            toolbar: {
+              exportName: 'T'
+          }
           }}
         />
         <Modal
