@@ -43,8 +43,8 @@ export default function SpacingGrid() {
         <Grid item xs={12}>
           <Grid container justifyContent="center" spacing={5}>
             {[1, 2, 3].map((value) => (
-                <Grid key={value} item>
-                  <GetChart typeVehicle={value} period="1"/>
+              <Grid key={value} item>
+                <GetChart typeVehicle={value} period="1"/>
               </Grid>
             ))}
           </Grid>

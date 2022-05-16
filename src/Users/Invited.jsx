@@ -4,21 +4,19 @@ import SpacingGrid from '../Components/AvailabilityPie'
 
 export default function Invited() {
   return (
-   <>
+    <>
         <SpacingGrid/>
         <p>
-        Already have an account?
+        ¿Ya tienes una cuenta?
         <NavLink to='/login' sx={{
-              textDecoration: 'none',
-              fontWeight: '600',
-              paddingLeft: '0.5rem',
-              cursor: 'pointer'
-            }}>
-
-            Login.
-
+          textDecoration: 'none',
+          fontWeight: '600',
+          paddingLeft: '0.5rem',
+          cursor: 'pointer'
+        }}>
+            Acceder
         </NavLink>
       </p>
-   </> 
+    </> 
   )
 }

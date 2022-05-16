@@ -9,14 +9,14 @@ import CopyRight from '../Components/CopyRight';
 import AuthService from './AuthService';
 
 const signUpValidationSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid Email').required('Email is required'),
+  email: Yup.string().email('Email invalido').required('Email es requerido'),
   password: Yup.string()
-    .required('No password provided')
-    .min(8, 'Password is too short - should be 8 chars minimum')
-    .matches(/\d+/, 'Password must have a number')
-    .matches(/[a-z]+/, 'Password must have a lowercase')
-    .matches(/[A-Z]+/, 'Password must have a uppercase')
-    .matches(/[!?.@#$%^&*()-+]+/, 'Password must have a special char'),
+    .required('Debes ingresar contraseña')
+    .min(8, 'La contraseña muy corta - debe contener como mínimo 8 caracteres')
+    .matches(/\d+/, 'La contraseña debe contener un número')
+    .matches(/[a-z]+/, 'La contraseña debe contener minúsculas')
+    .matches(/[A-Z]+/, 'La contraseña debe contener mayúsculas')
+    .matches(/[!?.@#$%^&*()-+]+/, 'La contraseña debe contener caracteres especiales'),
   password2: Yup.string()
 });
 
@@ -64,7 +64,7 @@ function Login() {
         <LockOutlined />
       </Avatar>
       <Typography sx={{ margin: '1rem' }} variant='h4'>
-        Login
+        Acceso
       </Typography>
       <Formik
         initialValues={initialValues}
@@ -85,11 +85,11 @@ function Login() {
                 <TextField name='email' label='Email' value={values.email} onChange={handleChange} onBlur={handleBlur} helperText={touched.email && errors.email} error={touched.email && Boolean(errors.email)} fullWidth />
               </Grid>
               <Grid item xs={12}>
-                <TextField name='password' label='Password' type='password' value={values.password} onChange={handleChange} onBlur={handleBlur} helperText={touched.password && errors.password} error={touched.password && Boolean(errors.password)} fullWidth />
+                <TextField name='password' label='Contraseña' type='password' value={values.password} onChange={handleChange} onBlur={handleBlur} helperText={touched.password && errors.password} error={touched.password && Boolean(errors.password)} fullWidth />
               </Grid>
               <Grid item xs={12}>
                 <Button type='submit' variant='contained'  fullWidth>
-                  Login
+                  Acceso
                 </Button>
               </Grid>
             </Grid>
@@ -97,7 +97,7 @@ function Login() {
         )}
       </Formik>
       <p>
-        Don't have an account yet?
+        ¿Aún no tienes una cuenta?
         <NavLink to='/register'sx={{
               textDecoration: 'none',
               fontWeight: '600',
@@ -105,7 +105,7 @@ function Login() {
             }}
             >
         
-            Register.
+            Registrar
         
         </NavLink>
       </p>

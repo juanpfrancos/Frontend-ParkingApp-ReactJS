@@ -6,10 +6,10 @@ import Taxes from './Tarifas';
 
 export default function Operator() {
   return (
-   <>
-        <Taxes/>
-        <SpacingGrid/>
-        <Tables/>
-   </> 
+  <>
+      <Taxes/>
+      <SpacingGrid/>
+      <Tables/>
+  </> 
   )
 }

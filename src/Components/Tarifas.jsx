@@ -98,11 +98,6 @@ function Taxes() {
     abrirCerrarModalEliminar()
   }
 
-  const abrirCerrarModalInsertar=()=>{
-    setModalInsertar(!modalInsertar);
-  }
-
-  
   const abrirCerrarModalEditar=()=>{
     setModalEditar(!modalEditar);
   }
