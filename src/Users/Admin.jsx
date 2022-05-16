@@ -55,9 +55,9 @@ export default function Admin() {
 
   return (
    <>
-        <Table data={tax} id={idTax} col={colTarifas} />
-        <SpacingGrid/>
         <Table data={regIn} id={idReg} col={colRegistros} />
+        <SpacingGrid/>
+        <Table data={tax} id={idTax} col={colTarifas} />
         <Table data={regOut} id={idReg} col={colRegistros} />
    </> 
   )

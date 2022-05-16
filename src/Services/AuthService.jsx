@@ -32,6 +32,13 @@ const ingreso = async (data) => {
 
 };
 
+const salida = async (data) => {
+  const reg = data.toString()
+  const response = await axios.put(API_URL + "registros"+"/"+{reg}, config);
+  console.log(response.reg)
+
+};
+
 
 const logout = () => {
   sessionStorage.clear();
@@ -55,7 +62,9 @@ const AuthService = {
   logout,
   getCurrentUser,
   ingreso,
+  salida,
   API_URL
+
 };
 
 
