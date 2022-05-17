@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import AuthService from '../Services/AuthService';
 import MaterialTable from "material-table";
 import axios from 'axios';
 import {Modal, TextField, Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import EditIcon from '@mui/icons-material/Edit';
-import { AddBox, ArrowDownward, SaveAlt } from "@material-ui/icons";
+import { SaveAlt } from "@material-ui/icons";
+
+const tableIcons = {
+  Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
+};
 
 //Columnas de la tabla
 const columns = [
@@ -45,7 +49,6 @@ function Taxes() {
   const styles= useStyles();
   const [data, setData]= useState([]);
   const [modalEditar, setModalEditar]= useState(false);
-  const [modalEliminar, setModalEliminar]= useState(false);
   const [tarifaSeleccionada, setTarifaSeleccionada]=useState({
     id_vehiculo: "",
     cuarto_hora: "",
@@ -94,17 +97,12 @@ function Taxes() {
 
   const seleccionarTarifa=(tarifa, caso)=>{
     setTarifaSeleccionada(tarifa);
-    (caso==="Editar")?abrirCerrarModalEditar()
-    :
-    abrirCerrarModalEliminar()
+    abrirCerrarModalEditar();
+
   };
 
   const abrirCerrarModalEditar=()=>{
     setModalEditar(!modalEditar);
-  };
-
-  const abrirCerrarModalEliminar=()=>{
-    setModalEliminar(!modalEliminar);
   };
 
   useEffect(()=>{
@@ -136,6 +134,7 @@ function Taxes() {
         <MaterialTable
           columns={columns}
           data={data}
+          icons={tableIcons}
           title="Tarifas"  
           actions={[
             {
@@ -146,7 +145,9 @@ function Taxes() {
           ]}
           options={{
             actionsColumnIndex: -1,
-            exportButton: true,
+            exportButton: {
+              pdf: true
+            },
             paging: false,
             search: false,
             sorting: false
@@ -156,8 +157,8 @@ function Taxes() {
               actions: "Editar"
             },
             toolbar: {
-              exportName: 'T'
-          }
+              exportTitle: 'Exportar'
+            },          
           }}
         />
         <Modal

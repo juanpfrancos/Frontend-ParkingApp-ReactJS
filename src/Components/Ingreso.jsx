@@ -48,7 +48,6 @@ const Ingreso = (props) => {
                         />
                     </Grid>
 
-
                     <Grid item>
                         <FormControl>
                             <FormLabel>Vehiculos</FormLabel>
@@ -120,9 +119,8 @@ const Ingreso = (props) => {
                         <Button variant="contained" color="primary" type="submit" style={{
                             margin: "5px"
                         }}>
-                            Submit
+                            Registrar
                         </Button>
-
                     </Grid>
                 </Grid>
             </form>

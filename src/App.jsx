@@ -5,7 +5,8 @@ import Home from './Home';
 import Login from './Services/Login';
 import SignUp from './Services/SignUp';
 import Ingreso from './Components/Ingreso';
-import Taxes from './Components/Tarifas'
+import Taxes from './Components/Tarifas';
+import Io from './Components/Registros';
 import Invited from './Users/Invited';
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/home' element={<Home/>} />
           <Route path='/ingreso' element={<Ingreso/>} />
           <Route path='/taxes' element={<Taxes/>} />
+          <Route path='/io' element={<Io/>} />
         </Routes>
       </BrowserRouter>
   </ThemeProvider>

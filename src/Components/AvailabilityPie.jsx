@@ -6,7 +6,6 @@ import AuthService from '../Services/AuthService';
 import { ChartPie } from './Chart';
 import axios from "axios";
 import { experimentalStyled as styled } from '@mui/material/styles';
-import Avatar from '@mui/material/Avatar';
 
 import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
@@ -54,7 +53,7 @@ export default function SpacingGrid() {
 
   return (
     <>
-    <Box sx={{ flexGrow: 1, width: "70%", textAlign: "center"}}>
+    <Box sx={{ flexGrow: 1, width: "60%", textAlign: "center", justify:"center"}}>
       <Item>
         <Grid item xs={12}>
           <Grid container justifyContent="center" alignItems="center" display="flex" spacing={5}>

@@ -2,13 +2,19 @@ import * as React from "react";
 import { NavLink} from 'react-router-dom';
 import SpacingGrid from '../Components/AvailabilityPie';
 import Taxes from '../Components/Tarifas';
+import Io from '../Components/Registros';
 
 export default function Invited() {
   return (
     <>
       <div>
         <SpacingGrid/>
+      </div>
+      <div>
         <Taxes/>
+      </div>
+      <div>
+        <Io/>
       </div>
         <p>
         ¿Ya tienes una cuenta?
