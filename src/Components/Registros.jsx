@@ -174,7 +174,6 @@ function Io() {
 
   return (
     <>
-      <div>
         <MaterialTable
           columns={columns}
           data={data}
@@ -220,7 +219,6 @@ function Io() {
           onClose={abrirCerrarModalEliminar}>
           {bodyEliminar}
         </Modal>
-      </div>
     </>
   );
 }

@@ -1,15 +1,9 @@
-import * as React from "react";
-import { useState } from "react";
-import SpacingGrid from '../Components/AvailabilityPie'
-import Tables from '../Components/Table';
-import Taxes from './Tarifas';
+import React from "react";
 
 export default function Operator() {
   return (
   <>
-      <Taxes/>
-      <SpacingGrid/>
-      <Tables/>
+    <h1>Holaaaa</h1>
   </> 
   )
 }

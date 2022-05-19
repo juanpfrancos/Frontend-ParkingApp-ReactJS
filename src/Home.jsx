@@ -19,6 +19,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AuthService from './Services/AuthService';
 import Admin from './Users/Admin';
+import Operator from './Users/Operator';
 
 const drawerWidth = 340;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -110,7 +111,8 @@ export default function Home() {
         <Typography sx={{ margin: '1rem', textAlign: 'center' }} variant='h3'>
           Bienvenido {sesion.rol}
         </Typography>
-        <Admin/>
+        {sesion.rol==='administrador' ? <Admin/>: null}
+        {sesion.rol==='operario' ? <Operator/>: null}        
       </Main>
 
       <Drawer

@@ -52,7 +52,7 @@ const GetChart = (props) => {
 export default function SpacingGrid() {
 
   return (
-    <>
+  <>
     <Box sx={{ flexGrow: 1, width: "60%", textAlign: "center", justify:"center"}}>
       <Item>
         <Grid item xs={12}>
@@ -98,8 +98,7 @@ export default function SpacingGrid() {
           </Grid>
         </Grid>
         </Item>
-      </Box>
-      
+      </Box>     
     </>
   );
 }
