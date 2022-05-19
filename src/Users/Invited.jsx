@@ -57,16 +57,26 @@ export default function Invited() {
 
 return (
 <Box sx={{ flexGrow: 1 }}>
-  <Grid container spacing={2}>
-    <Grid item xs={12}>
-      <h1>Bienvenidos a ParkingApp</h1>    
+  <Grid 
+    container
+    spacing={4}
+    direction="column"
+    alignItems="center"
+    justifyContent="center"
+    style={{ minHeight: '100vh' }}
+  >
+    <Grid item xs={12} align="center" style={{ width: "100%" }}>
+      <h1>Bienvenidos a ParkingApp</h1>
     </Grid>
-    <Grid item xs={12}>
-      <Table data={tax} id={idTax} col={colTarifas} />      
+
+    <Grid item xs={12} align="center" style={{ height: 215, width: "100%" }}>
+      <Table data={tax} id={idTax} col={colTarifas} />
     </Grid>
-    <Grid container xs={12}>
+
+    <Grid item xs={12} container style={{ width: "90%" }}>
       <SpacingGrid/>
     </Grid>
+
     <Grid item xs={12}>
       <p>
       ¿Ya tienes una cuenta?

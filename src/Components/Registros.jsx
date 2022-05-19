@@ -55,9 +55,7 @@ const columns = [
     { field: 'pago_final', title: 'Pago Final'},
     { field: 'total_costo', title: 'Total Costo'},
     { field: 'nombre', title: 'Realizo'},
-    { field: 'tipo_tarifa', title: 'Tipo Tarifa'},
-    { field: 'en_parqueadero', title: 'En parqueadero'},
-    { field: 'registro_activo', title: 'Registro activo'}
+    { field: 'tipo_tarifa', title: 'Tipo Tarifa'}
   ];
 //Url
 const endRegister = "registros/true";
@@ -175,6 +173,7 @@ function Io() {
   return (
     <>
         <MaterialTable
+          style={{width: "100%" }}
           columns={columns}
           data={data}
           icons={tableIcons}

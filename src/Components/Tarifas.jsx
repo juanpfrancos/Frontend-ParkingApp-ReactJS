@@ -135,7 +135,7 @@ function Taxes() {
           columns={columns}
           data={data}
           icons={tableIcons}
-          title="Tarifas"  
+          title="Tarifas"
           actions={[
             {
               icon: () => <EditIcon/>,

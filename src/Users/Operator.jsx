@@ -8,17 +8,24 @@ import Ingreso from "../Components/Ingreso";
 export default function Operator(props) {
   return (
   <>
-    <Grid container spacing={2}>
-        <Grid container xs={9}>
+      <Grid 
+        container 
+        spacing={4}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: '100vh' }}
+      >
+        <Grid item xs={12} style={{ width: "90%" }}>
           <Taxes/>
         </Grid>
-        <Grid container xs={9}>
+        <Grid item xs={12} container style={{ width: "90%" }}>
           <SpacingGrid/>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} container style={{ width: "90%" }}>
           <Io/>
         </Grid>
-        <Grid container xs={9}>
+        <Grid item xs={12} container style={{ width: "50%" }}>
           <Ingreso id={props.id} />
         </Grid>
     </Grid>

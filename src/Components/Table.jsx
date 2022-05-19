@@ -7,8 +7,8 @@ import AuthService from "../Services/AuthService"
 export default function Table(props) {
 
   return (
-    <div style={{ height: 300, width: "100%" }}>
       <DataGrid
+        style={{ height: 214, width: "90%" }}
         rows={props.data}
         columns={props.col}
         getRowId={props.id}
@@ -18,6 +18,5 @@ export default function Table(props) {
         bulkActionButtons={true}
         experimentalFeatures={{ newEditingApi: true }}
       />
-    </div>
   );
 }
