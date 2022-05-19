@@ -1,12 +1,11 @@
 import React from "react";
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import SpacingGrid from '../Components/AvailabilityPie';
 import Taxes from '../Components/Tarifas';
 import Io from '../Components/Registros';
 import Ingreso from "../Components/Ingreso";
 
-export default function Admin() {
+export default function Admin(props) {
   return (
     <>
           <Grid container spacing={2}>
@@ -20,7 +19,7 @@ export default function Admin() {
               <Io/>
             </Grid>
             <Grid container xs={9}>
-              <Ingreso/>
+              <Ingreso id={props.id}/>
             </Grid>
           </Grid>
     </> 

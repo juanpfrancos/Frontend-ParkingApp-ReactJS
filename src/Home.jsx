@@ -111,8 +111,8 @@ export default function Home() {
         <Typography sx={{ margin: '1rem', textAlign: 'center' }} variant='h3'>
           Bienvenido {sesion.rol}
         </Typography>
-        {sesion.rol==='administrador' ? <Admin/>: null}
-        {sesion.rol==='operario' ? <Operator/>: null}        
+        {sesion.rol==='administrador' ? <Admin id={sesion.id_usuario.toString()} />: null}
+        {sesion.rol==='operario' ? <Operator id={sesion.id_usuario.toString()} />: null}        
       </Main>
 
       <Drawer
@@ -136,18 +136,6 @@ export default function Home() {
         
         <Divider />
         <List>
-            <ListItem button>
-              <ListItemIcon>
-                  <InboxIcon  />
-              </ListItemIcon>
-              <ListItemText primary='Registrar Ingreso'/>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                  <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary='Registrar Salida' />
-            </ListItem>
             <ListItem button>
               <ListItemIcon>
                   <LogoutIcon />

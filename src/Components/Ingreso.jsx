@@ -15,7 +15,7 @@ const Ingreso = (props) => {
     const initialValues = {
         placa: "",
         tipo_vehiculo: "1",
-        realizo: "1",
+        realizo: props.id,
         tipo_tarifa: "1"
     };
     const handleInputChange = (e) => {
