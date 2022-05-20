@@ -37,6 +37,7 @@ function Login() {
       (error) => {
         console.log(error.response)
         console.log(error.message)
+        alert("Usuario y/o contraseña erronea");
       }
     );
 

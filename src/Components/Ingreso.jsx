@@ -13,6 +13,7 @@ import AuthService from '../Services/AuthService';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { experimentalStyled as styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -47,7 +48,10 @@ const Ingreso = (props) => {
 
     return (
         <>
-            <Box sx={{ flexGrow: 1, width: "60%", textAlign: "center", justify:"center"}}>
+            <Box sx={{ flexGrow: 1, width: "100%", textAlign: "center", justify:"center"}}>
+                <Typography variant="h4" noWrap sx={{ flexGrow: 1 }} component="div">
+                Ingresar Vehículo
+                </Typography>
                 <Item>
                     <form onSubmit={handleSubmit}>
                         <Grid container alignItems="center" justify="center" direction="column" >
