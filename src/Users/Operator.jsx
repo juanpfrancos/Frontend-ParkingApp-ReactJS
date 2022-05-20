@@ -3,6 +3,7 @@ import SpacingGrid from '../Components/AvailabilityPie';
 import Grid from '@mui/material/Grid';
 import Taxes from '../Components/Tarifas';
 import Io from '../Components/Registros';
+import OutCar from '../Components/Salidas';
 import Ingreso from "../Components/Ingreso";
 
 export default function Operator(props) {
@@ -25,6 +26,9 @@ export default function Operator(props) {
         <Grid item xs={12} container style={{ width: "90%" }}>
           <Io/>
         </Grid>
+        <Grid item xs={12} container style={{ width: "90%" }}>
+          <OutCar/>
+        </Grid>        
         <Grid item xs={12} container style={{ width: "50%" }}>
           <Ingreso id={props.id} />
         </Grid>
