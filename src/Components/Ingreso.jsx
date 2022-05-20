@@ -42,6 +42,7 @@ const Ingreso = (props) => {
         event.preventDefault();
         console.log(formValues);
         AuthService.ingreso(JSON.stringify(formValues))
+        window.location.reload(true);
     };
 
     return (

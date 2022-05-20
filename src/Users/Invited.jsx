@@ -3,8 +3,7 @@ import { NavLink} from 'react-router-dom';
 import MaterialTable from "material-table";
 import SpacingGrid from '../Components/AvailabilityPie';
 import AuthService from '../Services/AuthService';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import {Box, Grid, Typography } from '@mui/material';
 import axios from "axios";
 
 export default function Invited() {
@@ -39,7 +38,9 @@ return (
     style={{ minHeight: '100vh' }}
   >
     <Grid item xs={12} align="center" style={{ width: "100%" }}>
-      <h1>Bienvenidos a ParkingApp</h1>
+    <Typography sx={{ margin: '1rem' }} variant='h4'>
+       Bienvenido a ParkingApp
+    </Typography>
     </Grid>
 
     <Grid item xs={12} align="center" style={{ height: 215, width: "90%" }}>
