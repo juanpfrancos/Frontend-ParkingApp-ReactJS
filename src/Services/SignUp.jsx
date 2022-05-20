@@ -4,23 +4,24 @@ import { Formik } from 'formik';
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import CssBaseline from '@mui/material/CssBaseline';
 import CopyRight from '../Components/CopyRight';
-import AuthService from '../Services/AuthService';
+import AuthService from './AuthService';
 
 const signUpValidationSchema = Yup.object().shape({
-  username: Yup.string().required('Display name is required').min(2, 'Too short').max(15, 'Must be 15 char or less'),
-  email: Yup.string().email('Invalid Email').required('Email is required'),
+  username: Yup.string().required('El nombre es obligatorio').min(2, 'Demasiado corta').max(15, 'Debe tener 15 caracteres o menos'),
+  email: Yup.string().email('Email inválido').required('Email es requerido'),
   password: Yup.string()
-    .required('No password provided')
-    .min(8, 'Password is too short - should be 8 chars minimum')
-    .matches(/\d+/, 'Password must have a number')
-    .matches(/[a-z]+/, 'Password must have a lowercase')
-    .matches(/[A-Z]+/, 'Password must have a uppercase')
-    .matches(/[!?.@#$%^&*()-+]+/, 'Password must have a special char'),
+    .required('No se proporcionó contraseña')
+    .min(8, 'La contraseña es demasiado corta - debe tener un mínimo de 8 caracteres')
+    .matches(/\d+/, 'La contraseña debe tener un número')
+    .matches(/[a-z]+/, 'La contraseña debe tener minúsculas')
+    .matches(/[A-Z]+/, 'La contraseña debe tener mayúsculas')
+    .matches(/[!?.@#$%^&*()-+]+/, 'La contraseña debe tener un carácter especial'),
   password2: Yup.string()
-    .required('No password provided')
-    .min(8, 'Password is too short - should be 8 chars minimum')
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('No se proporcionó contraseña')
+    .min(8, 'La contraseña es demasiado corta - debe tener un mínimo de 8 caracteres')
+    .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
 });
 
 function SignUp() {
@@ -62,6 +63,7 @@ function SignUp() {
       }}
       maxWidth='sm'
     >
+      <CssBaseline />
       <Avatar
         sx={{
           margin: '1rem auto',
@@ -72,7 +74,7 @@ function SignUp() {
         <LockOutlined />
       </Avatar>
       <Typography sx={{ margin: '1rem' }} variant='h4'>
-        Sign Up
+        Inscribirse
       </Typography>
       {/* //! Envolvemos todo el formulario. 
         Tiene su propio estado local. Además, no definimos un estado. 
@@ -102,7 +104,7 @@ function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   name='username'
-                  label='User Name'
+                  label='Nombre'
                   variant='outlined'
                   value={values.username}
                   onChange={handleChange}
@@ -119,14 +121,14 @@ function SignUp() {
                 <TextField name='email' label='Email' variant='outlined' value={values.email} onChange={handleChange} onBlur={handleBlur} helperText={touched.email && errors.email} error={touched.email && Boolean(errors.email)} fullWidth />
               </Grid>
               <Grid item xs={12}>
-                <TextField name='password' label='Password' type='password' value={values.password} onChange={handleChange} onBlur={handleBlur} helperText={touched.password && errors.password} error={touched.password && Boolean(errors.password)} fullWidth />
+                <TextField name='password' label='Contraseña' type='password' value={values.password} onChange={handleChange} onBlur={handleBlur} helperText={touched.password && errors.password} error={touched.password && Boolean(errors.password)} fullWidth />
               </Grid>
               <Grid item xs={12}>
-                <TextField name='password2' label='Password Again' variant='outlined' type='password' value={values.password2} onChange={handleChange} onBlur={handleBlur} helperText={touched.password2 && errors.password2} error={touched.password2 && Boolean(errors.password2)} fullWidth />
+                <TextField name='password2' label='Repite la contraseña' variant='outlined' type='password' value={values.password2} onChange={handleChange} onBlur={handleBlur} helperText={touched.password2 && errors.password2} error={touched.password2 && Boolean(errors.password2)} fullWidth />
               </Grid>
               <Grid item xs={12}>
                 <Button type='submit' variant='contained' color='primary' fullWidth>
-                  SignUp
+                  Inscribirse
                 </Button>
               </Grid>
             </Grid>
@@ -134,16 +136,14 @@ function SignUp() {
         )}
       </Formik>
       <p>
-        Already have an account?
+        ¿Ya tienes una cuenta?
         <NavLink to='/login' sx={{
               textDecoration: 'none',
               fontWeight: '600',
               paddingLeft: '0.5rem',
               cursor: 'pointer'
             }}>
-
-            Login.
-
+            Acceso
         </NavLink>
       </p>
       <Box mt={5}>

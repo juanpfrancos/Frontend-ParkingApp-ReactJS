@@ -17,10 +17,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Disponibilidad from './Components/Disponibilidad'
-import SpacingGrid from './Components/DisponibilidadCuadras'
 import AuthService from './Services/AuthService';
-import Tables from './Components/Table'
+import Admin from './Users/Admin';
+import Operator from './Users/Operator';
 
 const drawerWidth = 340;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -92,7 +91,7 @@ export default function Home() {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div" color='common.white'>
+          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
             Parking App
           </Typography>
             <IconButton
@@ -109,11 +108,11 @@ export default function Home() {
 
       <Main open={open}>
         <DrawerHeader />
-        <Typography sx={{ margin: '1rem', color: 'white', textAlign: 'center' }} variant='h3'>
+        <Typography sx={{ margin: '1rem', textAlign: 'center' }} variant='h3'>
           Bienvenido {sesion.rol}
         </Typography>
-        <Tables />
-        <SpacingGrid/>
+        {sesion.rol==='administrador' ? <Admin id={sesion.id_usuario.toString()} />: null}
+        {sesion.rol==='operario' ? <Operator id={sesion.id_usuario.toString()} />: null}        
       </Main>
 
       <Drawer
@@ -131,7 +130,7 @@ export default function Home() {
 
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon sx={{ color:'white' }}/> : <ChevronRightIcon sx={{ color:'white' }}/>}
+            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         
@@ -139,21 +138,9 @@ export default function Home() {
         <List>
             <ListItem button>
               <ListItemIcon>
-                  <InboxIcon sx={{ color:'white' }} />
+                  <LogoutIcon />
               </ListItemIcon>
-              <ListItemText primary='Registrar Ingreso' sx={{ color:'white' }}/>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                  <InboxIcon sx={{ color:'white' }} />
-              </ListItemIcon>
-              <ListItemText primary='Registrar Salida' sx={{ color:'white' }}/>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                  <LogoutIcon sx={{ color:'white' }} />
-              </ListItemIcon>
-              <ListItemText primary='Cerrar Sesión' sx={{ color:'white' }} onClick={AuthService.logout}/>
+              <ListItemText primary='Cerrar Sesión' onClick={AuthService.logout}/>
             </ListItem>
         </List>
       </Drawer>
