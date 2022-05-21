@@ -63,6 +63,7 @@ const endRegister = "registros/false";
 const useStyles = makeStyles((theme) => ({
   modal: {
     position: 'absolute',
+    color:'black',
     width: 400,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
